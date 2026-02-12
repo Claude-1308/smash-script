@@ -759,6 +759,29 @@ pub unsafe fn EFFECT_FOLLOW_FLIP<
 }
 
 #[inline]
+pub unsafe fn EFFECT_FOLLOW_FLIP_RND<
+    A: ToF32,
+    B: ToF32,
+    C: ToF32,
+    D: ToF32,
+    E: ToF32,
+    F: ToF32,
+    G: ToF32,
+    H: ToF32,
+    I: ToF32,
+    J: ToF32,
+    K: ToF32,
+    L: ToF32,
+    M: ToF32
+    >(agent: &mut L2CAgentBase, right_effect: Hash40, left_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk: H, unk2: I, unk3: J, unk4: K, unk5: L, unk6: M, unk10: bool, axis: i32) {
+    agent.clear_lua_stack();
+    lua_args!(agent, right_effect, left_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32(), unk5.to_f32(), unk6.to_f32(), unk10, axis);
+    sv_animcmd::EFFECT_FOLLOW_FLIP(agent.lua_state_agent);
+    agent.clear_lua_stack();
+}
+
+
+#[inline]
 pub unsafe fn EFFECT_FOLLOW_FLIP_ALPHA<
     A: ToF32,
     B: ToF32,
